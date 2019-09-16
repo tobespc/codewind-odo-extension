@@ -1,0 +1,15 @@
+{
+    "requiredFiles": [],
+    "buildLogs": [
+        "odo.build"
+    ],
+    "appLogs": [
+        "odo.app"
+    ],
+    "capabilities": {
+        "startModes": [ 
+            "run"
+        ],
+        "controlCommands": []
+    }
+}

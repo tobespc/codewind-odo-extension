@@ -1,0 +1,67 @@
+################################################################################
+# Copyright (c) 2019 IBM Corporation and others.
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Eclipse Public License v2.0
+# which accompanies this distribution, and is available at
+# http://www.eclipse.org/legal/epl-v20.html
+#
+# Contributors:
+#     IBM Corporation - initial API and implementation
+################################################################################
+
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: codewind-odoclusterrole
+rules:
+- apiGroups: [""]
+  resources: ["services"]
+  verbs: ["get", "list"]
+
+- apiGroups: ["route.openshift.io"]
+  resources: ["routes"]
+  verbs: ["create", "delete", "deletecollection", "get", "list", "patch", "update", "watch"]
+
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["create", "delete", "deletecollection", "get", "list", "patch", "update", "watch"]
+
+- apiGroups: ["build.openshift.io"]
+  resources: ["buildconfigs"]
+  verbs: ["create", "delete", "deletecollection", "get", "list", "patch", "update", "watch"]
+
+- apiGroups: [""]
+  resources: ["persistentvolumeclaims"]
+  verbs: ["create", "delete", "deletecollection", "get", "list", "patch", "update", "watch"]
+
+- apiGroups: ["project.openshift.io"]
+  resources: ["projectrequests"]
+  verbs: ["create", "list"]
+
+- apiGroups: ["project.openshift.io"]
+  resources: ["projects"]
+  verbs: ["create", "delete", "get", "list", "watch", "patch", "update", "watch"]
+
+- apiGroups: ["image.openshift.io"]
+  resources: ["images", "imagestreams"]
+  verbs: ["create", "delete", "deletecollection", "get", "list", "patch", "update", "watch"]
+
+- apiGroups: ["image.openshift.io"]
+  resources: ["imagesignatures"]
+  verbs: ["create", "delete"]
+
+- apiGroups: ["image.openshift.io"]
+  resources: ["imagestreamimages"]
+  verbs: ["get"]
+
+- apiGroups: ["image.openshift.io"]
+  resources: ["imagestreamimports", "imagestreammappings"]
+  verbs: ["create"]
+
+- apiGroups: ["image.openshift.io"]
+  resources: ["imagestreamtags"]
+  verbs: ["create", "delete", "get", "list", "patch", "update"]
+
+- apiGroups: ["apps.openshift.io"]
+  resources: ["deploymentconfigs"]
+  verbs: ["create", "delete", "deletecollection", "get", "list", "patch", "update", "watch"]
