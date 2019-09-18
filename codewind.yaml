@@ -4,4 +4,3 @@ description: odo extension for Codewind
 projectType: odoExtension
 commands: []
 detection: .odo
-
