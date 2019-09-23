@@ -10,11 +10,20 @@
 #     IBM Corporation - initial API and implementation
 ###################################################################################
 
+# Define general variables
+ODO_EXTENSION_DIR=/codewind-workspace/.extensions/codewind-odo-extension
+ODO_CLI=$ODO_EXTENSION_DIR/bin/odo
+
+# General setup
+source /file-watcher/scripts/constants.sh
+set -o pipefail
+util=/file-watcher/scripts/util.sh
+
 COMMAND=$1
 shift 1
 
 function getAppName() {
-    APP_NAME=$(odo app list | tail -n 1 | awk '{print $1}')
+    APP_NAME=$($ODO_CLI app list | tail -n 1 | awk '{print $1}')
     echo $APP_NAME
 }
 
@@ -24,16 +33,16 @@ function getPodName() {
 }
 
 function getURL() {
-    URL=$(odo url list | tail -n 1 | awk '{print $3}')
+    URL=$($ODO_CLI url list | tail -n 1 | awk '{print $3}')
     echo $URL
 }
 
 function getPort() {
-    PORT=$(odo url list | tail -n 1 | awk '{print $4}')
+    PORT=$($ODO_CLI url list | tail -n 1 | awk '{print $4}')
     echo $PORT
 }
 
-if [ $COMMAND == "getAppName"]; then
+if [ $COMMAND == "getAppName" ]; then
     getAppName
 elif [ $COMMAND == "getPodName" ]; then
     COMPONENT_NAME=$1
@@ -41,6 +50,6 @@ elif [ $COMMAND == "getPodName" ]; then
     getPodName
 elif [ $COMMAND == "getURL" ]; then
     getURL
-elif [ $COMMAND == "getPort"]; then
+elif [ $COMMAND == "getPort" ]; then
     getPort
 fi

@@ -11,9 +11,9 @@
 ###################################################################################
 
 # Detailed build messages
-export BUILD_CREATE_INPROGRESS_MSG="Creating odo component"
-export BUILD_CREATE_FAIL_MSG="Failed to create odo component"
-export BUILD_PUSH_INPROGRESS_MSG="Building and deploying odo component"
-export BUILD_PUSH_FAIL_MSG="Failed to build or deploy odo component"
-export BUILD_URL_INPROGRESS_MSG="Creating URL for odo component"
-export BUILD_URL_FAIL_MSG="Fail to create URL for odo component"
+export BUILD_CREATE_INPROGRESS_MSG="buildscripts.odoBuildCreateInProgressMsg"
+export BUILD_CREATE_FAIL_MSG="buildscripts.odoBuildCreateFailMsg"
+export BUILD_PUSH_INPROGRESS_MSG="buildscripts.odoBuildPushInProgressMsg"
+export BUILD_PUSH_FAIL_MSG="buildscripts.odoBuildPushFailMsg"
+export BUILD_URL_INPROGRESS_MSG="buildscripts.odoBuildUrlInProgressMsg"
+export BUILD_URL_FAIL_MSG="buildscripts.odoBuildUrlFailMsg"
