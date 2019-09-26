@@ -27,15 +27,15 @@ ODO_BUILD_LOG=$LOG_FOLDER/odo.build.log
 ODO_APP_LOG=$LOG_FOLDER/odo.app.log
 ODO_DEBUG_LOG=$LOG_FOLDER/odo.debug.log
 
-echo "*** ODO" |& tee -a $ODO_DEBUG_LOG
-echo "*** PWD = $PWD" |& tee -a $ODO_DEBUG_LOG
-echo "*** ROOT = $ROOT" |& tee -a $ODO_DEBUG_LOG
-echo "*** PROJECT_ID = $PROJECT_ID" |& tee -a $ODO_DEBUG_LOG
-echo "*** COMMAND = $COMMAND" |& tee -a $ODO_DEBUG_LOG
-echo "*** COMPONENT_TYPE = $COMPONENT_TYPE" |& tee -a $ODO_DEBUG_LOG
-echo "*** COMPONENT_NAME = $COMPONENT_NAME" |& tee -a $ODO_DEBUG_LOG
-echo "*** LOG_FOLDER = $LOG_FOLDER" |& tee -a $ODO_DEBUG_LOG
-echo "*** AUTO_BUILD_ENABLED = $AUTO_BUILD_ENABLED" |& tee -a $ODO_DEBUG_LOG
+# echo "*** ODO" |& tee -a $ODO_DEBUG_LOG
+# echo "*** PWD = $PWD" |& tee -a $ODO_DEBUG_LOG
+# echo "*** ROOT = $ROOT" |& tee -a $ODO_DEBUG_LOG
+# echo "*** PROJECT_ID = $PROJECT_ID" |& tee -a $ODO_DEBUG_LOG
+# echo "*** COMMAND = $COMMAND" |& tee -a $ODO_DEBUG_LOG
+# echo "*** COMPONENT_TYPE = $COMPONENT_TYPE" |& tee -a $ODO_DEBUG_LOG
+# echo "*** COMPONENT_NAME = $COMPONENT_NAME" |& tee -a $ODO_DEBUG_LOG
+# echo "*** LOG_FOLDER = $LOG_FOLDER" |& tee -a $ODO_DEBUG_LOG
+# echo "*** AUTO_BUILD_ENABLED = $AUTO_BUILD_ENABLED" |& tee -a $ODO_DEBUG_LOG
 
 # General setup
 source /file-watcher/scripts/constants.sh
@@ -84,7 +84,7 @@ function create() {
 	$odo push $COMPONENT_NAME $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	if [ $? -eq 0 ]; then
 		echo -e "\nSuccessfully created, built and deployed odo application\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
-		$util updateBuildState $PROJECT_ID $BUILD_STATE_SUCCESS |& tee -a $ODO_DEBUG_LOG
+		$util updateBuildState $PROJECT_ID $BUILD_STATE_SUCCESS " " |& tee -a $ODO_DEBUG_LOG
 	else
 		echo -e "\nFailed to create or build or deploy odo application\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_PUSH_FAIL_MSG |& tee -a $ODO_DEBUG_LOG
@@ -175,6 +175,22 @@ elif [ "$COMMAND" == "remove" ]; then
 # Rebuild and deploy component to the OpenShift cluster
 elif [ "$COMMAND" == "rebuild" ]; then
 	update
+
+# Get pod name
+elif [ "$COMMAND" == "getPodName" ]; then
+	APP_NAME=$($odoUtil getAppName)
+	POD_NAME=$($odoUtil getPodName $COMPONENT_NAME $APP_NAME)
+	echo $POD_NAME
+
+# Get app name
+elif [ "$COMMAND" == "getAppName" ]; then
+	APP_NAME=$($odoUtil getAppName)
+	echo $APP_NAME
+
+# Get port
+elif [ "$COMMAND" == "getPort" ]; then
+	PORT=$($odoUtil getPort)
+	echo $PORT
 fi
 
 
