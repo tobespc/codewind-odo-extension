@@ -1,0 +1,58 @@
+[
+     {
+        "displayName": "OpenShift Node.js template",
+        "description": "Sample OpenShift Node.js application",
+        "language": "nodejs",
+        "projectType": "odo",
+        "projectStyle": "odo",
+        "location": "https://github.com/openshift/nodejs-ex"
+    },
+    {
+        "displayName": "OpenShift Python template",
+        "description": "Sample OpenShift Python application",
+        "language": "python",
+        "projectType": "odo",
+        "projectStyle": "odo",
+        "location": "https://github.com/OpenShiftDemos/os-sample-python"
+    },
+    {
+        "displayName": "OpenShift Ruby template",
+        "description": "Sample OpenShift Ruby application",
+        "language": "ruby",
+        "projectType": "odo",
+        "projectStyle": "odo",
+        "location": "https://github.com/OpenShiftDemos/os-sample-ruby"
+    },
+    {
+        "displayName": "OpenShift PHP template",
+        "description": "Sample OpenShift PHP application",
+        "language": "php",
+        "projectType": "odo",
+        "projectStyle": "odo",
+        "location": "https://github.com/OpenShiftDemos/os-sample-php"
+    },
+    {
+        "displayName": "OpenShift HTTPD template",
+        "description": "Sample OpenShift HTTPD application",
+        "language": "httpd",
+        "projectType": "odo",
+        "projectStyle": "odo",
+        "location": "https://github.com/OpenShiftDemos/http-base"
+    },
+    {
+        "displayName": "OpenShift Wildfly template",
+        "description": "Sample OpenShift Wildfly application",
+        "language": "wildfly",
+        "projectType": "odo",
+        "projectStyle": "odo",
+        "location": "https://github.com/OpenShiftDemos/openshift-tasks"
+    },
+    {
+        "displayName": "OpenShift Swift template",
+        "description": "Runtime for Swift applications",
+        "language": "swift",
+        "projectType": "odo",
+        "projectStyle": "odo",
+        "location": "https://"
+    }
+]
