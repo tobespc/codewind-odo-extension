@@ -135,10 +135,10 @@ function update() {
 
 	if [ $? -eq 0 ]; then
 		echo -e "\nSuccessfully updated odo application\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
-		$util updateAppState $PROJECT_ID $BUILD_STATE_SUCCESS
+		$util updateBuildState $PROJECT_ID $BUILD_STATE_SUCCESS " "
 	else
 		echo -e "\nFailed to update odo application\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
-		$util updateAppState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_PUSH_FAIL_MSG
+		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_PUSH_FAIL_MSG
 		exit 1
 	fi
 
