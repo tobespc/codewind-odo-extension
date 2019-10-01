@@ -48,9 +48,25 @@
         "location": "https://github.com/OpenShiftDemos/openshift-tasks"
     },
     {
-        "displayName": "OpenShift Swift template",
-        "description": "Runtime for Swift applications",
-        "language": "swift",
+        "displayName": "OpenShift Perl template",
+        "description": "Sample OpenShift Perl application",
+        "language": "perl",
+        "projectType": "odo",
+        "projectStyle": "odo",
+        "location": "https://github.com/sclorg/dancer-ex"
+    },
+    {
+        "displayName": "OpenShift .NET template",
+        "description": "Sample OpenShift .NET application",
+        "language": "dotnet",
+        "projectType": "odo",
+        "projectStyle": "odo",
+        "location": "https://github.com/redhat-developer/s2i-dotnetcore-ex"
+    },
+    {
+        "displayName": "OpenShift XYZ template",
+        "description": "Sample OpenShift XYZ application",
+        "language": "xyz",
         "projectType": "odo",
         "projectStyle": "odo",
         "location": "https://"
