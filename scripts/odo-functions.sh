@@ -81,17 +81,6 @@ function odoDelete() {
     fi
 }
 
-function odoWatch() {
-    echo "- Watching odo component: $COMPONENT_NAME" |& tee -a $ODO_DEBUG_LOG
-    $ODO_CLI watch $COMPONENT_NAME &
-    if [ $? -eq 0 ]; then
-		echo "- Successfully watched odo component: $COMPONENT_NAME" |& tee -a $ODO_DEBUG_LOG
-	else
-		echo "- Failed to watch odo component: $COMPONENT_NAME" |& tee -a $ODO_DEBUG_LOG
-		exit 1
-	fi
-}
-
 if [ $COMMAND == "create" ]; then
     COMPONENT_TYPE=$1
     COMPONENT_NAME=$2
@@ -117,9 +106,4 @@ elif [ $COMMAND == "delete" ]; then
     COMPONENT_NAME=$1
     ODO_DEBUG_LOG=$2
     odoDelete
-elif [ $COMMAND == "watch" ]; then
-    COMPONENT_NAME=$1
-    ODO_DEBUG_LOG-$2
-    odoWatch
 fi
-

@@ -154,20 +154,6 @@ if [ "$COMMAND" == "create" ]; then
 elif [ "$COMMAND" == "update" ]; then
 	update
 
-# Enable auto build
-elif [ "$COMMAND" == "enableautobuild" ]; then
-	watch
-
-# Disable auto build
-elif [ "$COMMAND" == "disableautobuild" ]; then
-	echo "Disabling auto build for odo component: $COMPONENT_NAME"
-	kill -9 $(ps aux | grep "odo watch" | head -n 1 | awk '{print $2}')
-	if [ $? -eq 0 ]; then
-		echo "Successfully disabled odo application"
-	else
-		echo "Failed to disable odo application"
-	fi
-
 # Remove component from the OpenShift cluster
 elif [ "$COMMAND" == "remove" ]; then
 	remove
@@ -191,6 +177,9 @@ elif [ "$COMMAND" == "getAppName" ]; then
 elif [ "$COMMAND" == "getPort" ]; then
 	PORT=$($odoUtil getPort)
 	echo $PORT
+
+# Get URL
+elif [ "$COMMAND" == "getURL" ]; then
+	URL=$($odoUtil getURL)
+	echo $URL
 fi
-
-
