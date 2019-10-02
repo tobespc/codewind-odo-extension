@@ -1,74 +1,74 @@
 [
      {
-        "displayName": "OpenShift Node.js template",
-        "description": "Sample OpenShift Node.js application",
+        "displayName": "OpenShift Node.js",
+        "description": "OpenShift Node.js sample application",
         "language": "nodejs",
         "projectType": "odo",
-        "projectStyle": "odo",
+        "projectStyle": "OpenShift",
         "location": "https://github.com/openshift/nodejs-ex"
     },
     {
-        "displayName": "OpenShift Python template",
-        "description": "Sample OpenShift Python application",
+        "displayName": "OpenShift Python",
+        "description": "OpenShift Python sample application",
         "language": "python",
         "projectType": "odo",
-        "projectStyle": "odo",
+        "projectStyle": "OpenShift",
         "location": "https://github.com/OpenShiftDemos/os-sample-python"
     },
     {
-        "displayName": "OpenShift Ruby template",
-        "description": "Sample OpenShift Ruby application",
+        "displayName": "OpenShift Ruby",
+        "description": "OpenShift Ruby sample application",
         "language": "ruby",
         "projectType": "odo",
-        "projectStyle": "odo",
+        "projectStyle": "OpenShift",
         "location": "https://github.com/OpenShiftDemos/os-sample-ruby"
     },
     {
-        "displayName": "OpenShift PHP template",
-        "description": "Sample OpenShift PHP application",
+        "displayName": "OpenShift PHP",
+        "description": "OpenShift PHP sample application",
         "language": "php",
         "projectType": "odo",
-        "projectStyle": "odo",
+        "projectStyle": "OpenShift",
         "location": "https://github.com/OpenShiftDemos/os-sample-php"
     },
     {
-        "displayName": "OpenShift HTTPD template",
-        "description": "Sample OpenShift HTTPD application",
+        "displayName": "OpenShift HTTPD",
+        "description": "OpenShift HTTPD sample application",
         "language": "httpd",
         "projectType": "odo",
-        "projectStyle": "odo",
+        "projectStyle": "OpenShift",
         "location": "https://github.com/OpenShiftDemos/http-base"
     },
     {
-        "displayName": "OpenShift Wildfly template",
-        "description": "Sample OpenShift Wildfly application",
+        "displayName": "OpenShift Wildfly",
+        "description": "OpenShift Wildfly sample application",
         "language": "wildfly",
         "projectType": "odo",
-        "projectStyle": "odo",
+        "projectStyle": "OpenShift",
         "location": "https://github.com/OpenShiftDemos/openshift-tasks"
     },
     {
-        "displayName": "OpenShift Perl template",
-        "description": "Sample OpenShift Perl application",
+        "displayName": "OpenShift Perl",
+        "description": "OpenShift Perl sample application",
         "language": "perl",
         "projectType": "odo",
-        "projectStyle": "odo",
+        "projectStyle": "OpenShift",
         "location": "https://github.com/sclorg/dancer-ex"
     },
     {
-        "displayName": "OpenShift .NET template",
-        "description": "Sample OpenShift .NET application",
+        "displayName": "OpenShift .NET",
+        "description": "OpenShift .NET sample application",
         "language": "dotnet",
         "projectType": "odo",
-        "projectStyle": "odo",
+        "projectStyle": "OpenShift",
         "location": "https://github.com/redhat-developer/s2i-dotnetcore-ex"
     },
     {
-        "displayName": "OpenShift XYZ template",
-        "description": "Sample OpenShift XYZ application",
+        "displayName": "OpenShift XYZ",
+        "description": "OpenShift XYZ sample application",
         "language": "xyz",
         "projectType": "odo",
-        "projectStyle": "odo",
+        "projectStyle": "OpenShift",
         "location": "https://"
     }
 ]

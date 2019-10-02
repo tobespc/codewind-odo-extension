@@ -69,7 +69,7 @@ module.exports = {
             // Return a link to the updated json index file
             const repos = [];
             repos.push({
-                description: 'OpenShift Stacks',
+                description: 'OpenShift Templates',
                 url: JSON_FILE_URL
             });
             resolve(repos);
