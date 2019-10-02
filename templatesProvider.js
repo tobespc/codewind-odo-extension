@@ -59,18 +59,24 @@ module.exports = {
 
                     // Write out reconciled index.json file
                     const reconciledjsoncontent = JSON.stringify(masterjson, null, 3);
-                    fs.writeFile(RECONCILED_INDEX_JSON_FILE, reconciledjsoncontent, 'utf8', function (err) {
-                        if (err)
-                            return reject(err);
-                    }); 
+                    try {
+                        fs.writeFileSync(RECONCILED_INDEX_JSON_FILE, reconciledjsoncontent, 'utf8');
+                    }
+                    catch (e) {
+                        return reject(e);
+                    }
                 });
             });
             
             // Return a link to the updated json index file
             const repos = [];
+            const projectStylesArr = [];
+            projectStylesArr.push('OpenShift')
             repos.push({
-                description: 'OpenShift Templates',
-                url: JSON_FILE_URL
+                name: 'OpenShift Templates',
+                description: 'The set of templates for new OpenShift projects in Codewind.',
+                url: JSON_FILE_URL,
+                projectStyles: projectStylesArr
             });
             resolve(repos);
         });
