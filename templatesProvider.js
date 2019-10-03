@@ -73,7 +73,7 @@ module.exports = {
             const projectStylesArr = [];
             projectStylesArr.push('OpenShift')
             repos.push({
-                name: 'OpenShift Templates',
+                name: 'OpenShift templates',
                 description: 'The set of templates for new OpenShift projects in Codewind.',
                 url: JSON_FILE_URL,
                 projectStyles: projectStylesArr

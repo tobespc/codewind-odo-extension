@@ -5,7 +5,7 @@
         "language": "nodejs",
         "projectType": "odo",
         "projectStyle": "OpenShift",
-        "location": "https://github.com/openshift/nodejs-ex"
+        "location": "https://github.com/sclorg/nodejs-ex"
     },
     {
         "displayName": "OpenShift Python",
@@ -13,7 +13,7 @@
         "language": "python",
         "projectType": "odo",
         "projectStyle": "OpenShift",
-        "location": "https://github.com/OpenShiftDemos/os-sample-python"
+        "location": "https://github.com/sclorg/dancer-ex"
     },
     {
         "displayName": "OpenShift Ruby",
@@ -21,7 +21,7 @@
         "language": "ruby",
         "projectType": "odo",
         "projectStyle": "OpenShift",
-        "location": "https://github.com/OpenShiftDemos/os-sample-ruby"
+        "location": "https://github.com/sclorg/rails-ex"
     },
     {
         "displayName": "OpenShift PHP",
@@ -29,7 +29,7 @@
         "language": "php",
         "projectType": "odo",
         "projectStyle": "OpenShift",
-        "location": "https://github.com/OpenShiftDemos/os-sample-php"
+        "location": "https://github.com/sclorg/cakephp-ex"
     },
     {
         "displayName": "OpenShift HTTPD",
