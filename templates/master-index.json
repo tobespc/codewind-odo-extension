@@ -13,7 +13,7 @@
         "language": "python",
         "projectType": "odo",
         "projectStyle": "OpenShift",
-        "location": "https://github.com/sclorg/dancer-ex"
+        "location": "https://github.com/sclorg/django-ex"
     },
     {
         "displayName": "OpenShift Ruby",
