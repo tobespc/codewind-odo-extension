@@ -15,7 +15,7 @@ metadata:
   name: codewind-odoclusterrolebinding
 subjects:
 - kind: ServiceAccount
-  namespace: eclipse-che
+  namespace: che
   name: che-workspace
 roleRef:
   kind: ClusterRole
