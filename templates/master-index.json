@@ -32,14 +32,6 @@
         "location": "https://github.com/sclorg/cakephp-ex"
     },
     {
-        "displayName": "OpenShift HTTPD",
-        "description": "OpenShift HTTPD sample application",
-        "language": "httpd",
-        "projectType": "odo",
-        "projectStyle": "OpenShift",
-        "location": "https://github.com/OpenShiftDemos/http-base"
-    },
-    {
         "displayName": "OpenShift Wildfly",
         "description": "OpenShift Wildfly sample application",
         "language": "wildfly",
@@ -54,14 +46,6 @@
         "projectType": "odo",
         "projectStyle": "OpenShift",
         "location": "https://github.com/sclorg/dancer-ex"
-    },
-    {
-        "displayName": "OpenShift .NET",
-        "description": "OpenShift .NET sample application",
-        "language": "dotnet",
-        "projectType": "odo",
-        "projectStyle": "OpenShift",
-        "location": "https://github.com/redhat-developer/s2i-dotnetcore-ex"
     },
     {
         "displayName": "OpenShift XYZ",
