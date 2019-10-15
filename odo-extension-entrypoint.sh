@@ -112,10 +112,6 @@ function remove() {
 	POD_NAME=$($odoUtil getPodName $COMPONENT_NAME $APP_NAME)
 	APP_LOG_MONITOR_PID=$(ps aux | grep "kubectl logs -f $POD_NAME" | awk 'NR==2' | awk '{print $2}')
 	kill -9 $APP_LOG_MONITOR_PID
-	if [ $? -ne 0 ]; then
-		echo "Failed to stop monitor app log"
-		exit 1
-	fi
 
 	echo -e "\nStep 2 of 2:" |& tee -a $ODO_DEBUG_LOG
 	$odo delete $COMPONENT_NAME
