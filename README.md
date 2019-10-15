@@ -1,7 +1,7 @@
-# codewind-odo-extension
-Extension to Codewind providing support for odo projects: https://codewind.dev
+# Codewind ODO extension
+Extension to Codewind providing support for ODO projects: https://codewind.dev
 
-Add additional rules to support ODO extension
+## Add additional rules to support Codewind ODO extension
 ODO extension needs add additional rules for accessing OpenShift resources
 Steps to add additional rules:
 1. In your home directory, run the following command to clone the ODO extension repository
@@ -11,8 +11,7 @@ Steps to add additional rules:
 `kubectl apply -f codewind-odoclusterrole.yaml`
 `kubectl apply -f codewind-odoclusterrolebinding.yaml`
 
-
-Install ODO extension manually
+## Install Codewind ODO extension manually
 1. In your home directory, run the following command to clone the ODO extension repository
 `git clone https://github.com/eclipse/codewind-odo-extension`
 2. Copy the ODO extension repository to `/codewind-workspace/.extensions` directory in the PFE container
@@ -21,9 +20,13 @@ Install ODO extension manually
 5 Restart the node server inside PFE container to load the ODO extension
 Note: We already had installer for ODO extension, the installer will help you automatically install ODO extension if you are running Codewind on OKD/OpenShift cluster, this is only workaround when installer doesn't work properly
 
-
-Current Limitations
+## Current Limitations
 - ODO extension is supported on Codewind for Eclipse Che with OKD/OpenShift cluster
 - ODO extension doesn't support project configuration
 - ODO extension doesn't support debug mode
 - ODO extension doesn't have HTTPS protocol support for accessing applications
+
+## Contributing 
+We welcome submitting issues and contributions.
+1. [Submitting issues](https://github.com/eclipse/codewind/issues)
+2. [Contributing](CONTRIBUTING.md)
