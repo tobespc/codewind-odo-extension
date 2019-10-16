@@ -30,13 +30,5 @@
         "projectType": "odo",
         "projectStyle": "OpenShift",
         "location": "https://github.com/sclorg/dancer-ex"
-    },
-    {
-        "displayName": "OpenShift XYZ",
-        "description": "OpenShift XYZ sample application",
-        "language": "xyz",
-        "projectType": "odo",
-        "projectStyle": "OpenShift",
-        "location": "https://"
     }
 ]
