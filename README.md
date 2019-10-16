@@ -2,7 +2,7 @@
 Extension to Codewind providing support for ODO projects: https://codewind.dev
 
 ## Add additional rules to support Codewind ODO extension
-The ODO extension needs to add additional rules for accessing OpenShift resources
+The ODO extension needs to add additional rules for accessing OpenShift resources:
 1. In your home directory, run the following command to clone the ODO extension repository:
 `git clone https://github.com/eclipse/codewind-odo-extension`
 2. Login to your OpenShift/OKD cluster
