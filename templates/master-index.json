@@ -16,28 +16,12 @@
         "location": "https://github.com/sclorg/django-ex"
     },
     {
-        "displayName": "OpenShift Ruby",
-        "description": "OpenShift Ruby sample application",
-        "language": "ruby",
-        "projectType": "odo",
-        "projectStyle": "OpenShift",
-        "location": "https://github.com/sclorg/rails-ex"
-    },
-    {
         "displayName": "OpenShift PHP",
         "description": "OpenShift PHP sample application",
         "language": "php",
         "projectType": "odo",
         "projectStyle": "OpenShift",
         "location": "https://github.com/sclorg/cakephp-ex"
-    },
-    {
-        "displayName": "OpenShift Wildfly",
-        "description": "OpenShift Wildfly sample application",
-        "language": "wildfly",
-        "projectType": "odo",
-        "projectStyle": "OpenShift",
-        "location": "https://github.com/OpenShiftDemos/openshift-tasks"
     },
     {
         "displayName": "OpenShift Perl",
