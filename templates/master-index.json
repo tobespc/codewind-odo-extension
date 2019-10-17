@@ -16,14 +16,6 @@
         "location": "https://github.com/sclorg/django-ex"
     },
     {
-        "displayName": "OpenShift PHP",
-        "description": "OpenShift PHP sample application",
-        "language": "php",
-        "projectType": "odo",
-        "projectStyle": "OpenShift",
-        "location": "https://github.com/sclorg/cakephp-ex"
-    },
-    {
         "displayName": "OpenShift Perl",
         "description": "OpenShift Perl sample application",
         "language": "perl",
