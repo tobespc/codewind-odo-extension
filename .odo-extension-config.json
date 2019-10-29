@@ -1,11 +1,17 @@
 {
     "requiredFiles": [],
-    "buildLogs": [
-        "odo.build"
-    ],
-    "appLogs": [
-        "odo.app"
-    ],
+    "appWorkspaceLogs": {
+        "files": {
+            "odo.app": null
+        }
+    },
+    "appContainerLogs": {},
+    "buildWorkspaceLogs": {
+         "files": {
+            "odo.build": null
+        }
+     },
+    "buildContainerLogs": {},
     "capabilities": {
         "startModes": [ 
             "run"
