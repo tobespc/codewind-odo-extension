@@ -102,6 +102,15 @@ function create() {
 	POD_NAME=$($odoUtil getPodName $COMPONENT_NAME $APP_NAME)
 	kubectl logs -f $POD_NAME >> "$ODO_APP_LOG" & 
 	$util updateAppState $PROJECT_ID $APP_STATE_STARTING |& tee -a $ODO_DEBUG_LOG
+
+	echo "Adding owner references for all resources deployed by odo" |& tee -a $ODO_DEBUG_LOG
+	$odoUtil addOwnerReference $COMPONENT_NAME $APP_NAME $ODO_DEBUG_LOG
+	if [ $? -eq 0 ]; then
+		echo -e "\nSuccessfully added owner references for all resources deployed by odo\n" |& tee -a $ODO_DEBUG_LOG
+	else
+		echo -e "\nFailed to add owner references for all resources deployed by odo\n" |& tee -a $ODO_DEBUG_LOG
+		exit 1
+	fi
 }
 
 function remove() {
