@@ -1,4 +1,7 @@
 # Codewind ODO extension
+[![License](https://img.shields.io/badge/License-EPL%202.0-red.svg?label=license&logo=eclipse)](https://www.eclipse.org/legal/epl-2.0/)
+[![Chat](https://img.shields.io/static/v1.svg?label=chat&message=mattermost&color=145dbf)](https://mattermost.eclipse.org/eclipse/channels/eclipse-codewind)
+
 Extension to Codewind providing support for ODO projects: https://codewind.dev
 
 ## Add additional rules to support Codewind ODO extension
