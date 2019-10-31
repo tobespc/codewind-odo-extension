@@ -159,13 +159,19 @@ if [ "$COMMAND" == "create" ]; then
 elif [ "$COMMAND" == "update" ]; then
 	update
 
+	if [ $? -ne 0 ]; then
+		remove
+		create
+	fi	
+
 # Remove component from the OpenShift cluster
 elif [ "$COMMAND" == "remove" ]; then
 	remove
 
 # Rebuild and deploy component to the OpenShift cluster
 elif [ "$COMMAND" == "rebuild" ]; then
-	update
+	remove
+	create
 
 # Get pod name
 elif [ "$COMMAND" == "getPodName" ]; then
