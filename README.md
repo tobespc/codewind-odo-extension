@@ -1,5 +1,6 @@
 # Codewind ODO extension
 [![License](https://img.shields.io/badge/License-EPL%202.0-red.svg?label=license&logo=eclipse)](https://www.eclipse.org/legal/epl-2.0/)
+[![Build Status](https://ci.eclipse.org/codewind/buildStatus/icon?job=Codewind%2Fcodewind-odo-extension%2Fmaster)](https://ci.eclipse.org/codewind/job/Codewind/job/codewind-odo-extension/job/master/)
 [![Chat](https://img.shields.io/static/v1.svg?label=chat&message=mattermost&color=145dbf)](https://mattermost.eclipse.org/eclipse/channels/eclipse-codewind)
 
 Extension to Codewind providing support for ODO projects: https://codewind.dev
