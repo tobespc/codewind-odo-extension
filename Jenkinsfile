@@ -37,6 +37,14 @@ pipeline {
         } 
         
         stage('Deploy') {
+            // This when clause disables PR build uploads; you may comment this out if you want your build uploaded.
+            when {
+                beforeAgent true
+                not {
+                    changeRequest()
+                }
+            }
+
             steps {
                 sshagent ( ['projects-storage.eclipse.org-bot-ssh']) {
                     sh '''#!/usr/bin/env bash
