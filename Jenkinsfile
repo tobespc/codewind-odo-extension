@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh '''#!/usr/bin/env bash
                     export REPO_NAME="codewind-odo-extension"
-                    export VERSION="GIT_BRANCH"
+                    export VERSION="$GIT_BRANCH"
                     export OUTPUT_NAME="$REPO_NAME-$VERSION"
 
                     echo "Building codewind odo extension zip file"
@@ -36,7 +36,7 @@ pipeline {
                 sshagent ( ['projects-storage.eclipse.org-bot-ssh']) {
                     sh '''#!/usr/bin/env bash
                         export REPO_NAME="codewind-odo-extension"
-                        export VERSION="GIT_BRANCH"
+                        export VERSION="$GIT_BRANCH"
                         export OUTPUT_NAME="$REPO_NAME-$VERSION"
                         export DOWNLOAD_AREA_URL="https://download.eclipse.org/codewind/$REPO_NAME"
                         export LATEST_DIR="latest"
