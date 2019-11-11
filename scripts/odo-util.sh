@@ -28,7 +28,7 @@ function getAppName() {
 }
 
 function getPodName() {
-    POD_NAME=$(kubectl get po -o name --selector=deploymentconfig=$COMPONENT_NAME-$APP_NAME)
+    POD_NAME=$(kubectl get po -o name --selector=deploymentconfig=cw-$COMPONENT_NAME-$APP_NAME)
     echo $POD_NAME
 }
 
