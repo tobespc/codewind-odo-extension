@@ -14,7 +14,7 @@ pipeline {
                 sh '''#!/usr/bin/env bash
                     export REPO_NAME="codewind-odo-extension"
                     if [ $GIT_BRANCH == "master" ]; then
-                        VERSION="latest"
+                        VERSION="9.9.9999"
                     else
                         VERSION="$GIT_BRANCH"
                     fi
@@ -50,7 +50,7 @@ pipeline {
                     sh '''#!/usr/bin/env bash
                         export REPO_NAME="codewind-odo-extension"
                         if [ $GIT_BRANCH == "master" ]; then
-                            VERSION="latest"
+                            VERSION="9.9.9999"
                         else
                             VERSION="$GIT_BRANCH"
                         fi
