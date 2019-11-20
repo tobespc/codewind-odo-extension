@@ -100,7 +100,7 @@ function create() {
 	$util updateAppState $PROJECT_ID $APP_STATE_STOPPED |& tee -a $ODO_DEBUG_LOG
 	APP_NAME=$($odoUtil getAppName)
 	POD_NAME=$($odoUtil getPodName $COMPONENT_NAME $APP_NAME)
-	kubectl logs -f $POD_NAME >> "$ODO_APP_LOG" & 
+	kubectl logs -f $POD_NAME >> "$ODO_APP_LOG" &
 	$util updateAppState $PROJECT_ID $APP_STATE_STARTING |& tee -a $ODO_DEBUG_LOG
 
 	echo "Adding owner references for all resources deployed by odo" |& tee -a $ODO_DEBUG_LOG
@@ -119,8 +119,7 @@ function remove() {
 	echo "Stopping monitor app log" |& tee -a $ODO_DEBUG_LOG
 	APP_NAME=$($odoUtil getAppName)
 	POD_NAME=$($odoUtil getPodName $COMPONENT_NAME $APP_NAME)
-	APP_LOG_MONITOR_PID=$(ps aux | grep "kubectl logs -f $POD_NAME" | awk 'NR==2' | awk '{print $2}')
-	kill -9 $APP_LOG_MONITOR_PID
+	pgrep -f "kubectl logs -f $POD_NAME" | xargs kill -9
 
 	echo -e "\nStep 2 of 2:" |& tee -a $ODO_DEBUG_LOG
 	$odo delete $COMPONENT_NAME
