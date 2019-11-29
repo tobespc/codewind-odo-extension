@@ -8,6 +8,14 @@
         "location": "https://github.com/sclorg/nodejs-ex"
     },
     {
+        "displayName": "OpenShift Java",
+        "description": "OpenShift Java sample application",
+        "language": "codewind-odo-openjdk18",
+        "projectType": "odo",
+        "projectStyle": "OpenShift",
+        "location": "https://github.com/spring-projects/spring-petclinic"
+    },
+    {
         "displayName": "OpenShift Python",
         "description": "OpenShift Python sample application",
         "language": "python",
