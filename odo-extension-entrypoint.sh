@@ -122,7 +122,7 @@ function remove() {
 	pgrep -f "kubectl logs -f $POD_NAME" | xargs kill -9
 
 	echo -e "\nStep 2 of 2:" |& tee -a $ODO_DEBUG_LOG
-	$odo delete $COMPONENT_NAME
+	$odo delete $COMPONENT_NAME $ODO_DEBUG_LOG
 	if [ $? -eq 0 ]; then
 		echo -e "\nSuccessfully removed odo application\n" |& tee -a $ODO_DEBUG_LOG
 	else

@@ -46,7 +46,7 @@ function odoPush() {
 
 function odoUrl() {
 	echo "- Creating url for odo component: $COMPONENT_NAME" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
-	$ODO_CLI url create $COMPONENT_NAME |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+	$ODO_CLI url create $COMPONENT_NAME --port 8080 |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	if [ $? -eq 0 ]; then
 		echo "- Successfully created url for odo component: $COMPONENT_NAME" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	else

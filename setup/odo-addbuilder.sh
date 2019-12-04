@@ -11,7 +11,7 @@
 ###################################################################################
 
 # Import OpenShift image stream
-oc import-image codewind-odo-openjdk18 --from=registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift --confirm --overwrite=true
+oc import-image codewind-odo-openjdk18 --from=registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift --confirm
 
 # Tag the image as a builder
 oc annotate istag/codewind-odo-openjdk18:latest tags=builder --overwrite=true
