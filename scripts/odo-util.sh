@@ -48,7 +48,7 @@ function addOwnerReference() {
     APP_LABEL="app.kubernetes.io/part-of=$APP_NAME"
     PFE_NAME=$(kubectl get rs --selector=$PFE_LABEL -o jsonpath='{.items[0].metadata.name}')
     PFE_UID=$(kubectl get rs --selector=$PFE_LABEL -o jsonpath='{.items[0].metadata.uid}')
-    RESOURCES=('deploymentconfig' 'service' 'imagestream' 'route' 'secret' 'persistentvolumeclaim')
+    RESOURCES=('deploymentconfig' 'imagestream')
 
     for RESOURCE in "${RESOURCES[@]}"; do
         echo "Adding owner reference to resource: $RESOURCE" |& tee -a $ODO_DEBUG_LOG
