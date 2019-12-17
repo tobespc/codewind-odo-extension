@@ -29,7 +29,7 @@ function odoCreate() {
 		echo "- Successfully created odo component: $COMPONENT_NAME" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	else
 		echo "- Failed to create odo component: $COMPONENT_NAME" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
-		exit 1
+		exit 3
 	fi
 }
 
@@ -40,7 +40,7 @@ function odoPush() {
 		echo "- Successfully built and deployed odo component: $COMPONENT_NAME" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	else
 		echo "- Failed to build and deploy odo component: $COMPONENT_NAME" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
-		exit 1
+		exit 3
 	fi
 }
 
@@ -51,7 +51,7 @@ function odoUrl() {
 		echo "- Successfully created url for odo component: $COMPONENT_NAME" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	else
 		echo "- Failed to create url for odo component: $COMPONENT_NAME" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
-		exit 1
+		exit 3
 	fi
 }
 
@@ -62,7 +62,7 @@ function odoLog() {
 		echo "- Successfully generated log for odo component: $COMPONENT_NAME" |& tee -a $ODO_DEBUG_LOG
 	else
 		echo "- Failed to generate log for odo component: $COMPONENT_NAME" |& tee -a $ODO_DEBUG_LOG
-		exit 1
+		exit 3
 	fi
 }
 
@@ -74,7 +74,7 @@ function odoDelete() {
 		    echo "- Successfully deleted odo component: $COMPONENT_NAME" |& tee -a $ODO_DEBUG_LOG
 	    else
 		    echo "- Failed to delete odo component: $COMPONENT_NAME" |& tee -a $ODO_DEBUG_LOG
-		    exit 1
+		    exit 3
 	    fi
     else
         echo "- The odo component $COMPONENT_NAME did not exist" |& tee -a $ODO_DEBUG_LOG

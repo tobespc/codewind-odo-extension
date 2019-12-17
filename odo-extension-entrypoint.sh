@@ -60,7 +60,7 @@ function create() {
 	$odo create $COMPONENT_TYPE $COMPONENT_NAME $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	if [ $? -ne 0 ]; then
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_CREATE_FAIL_MSG |& tee -a $ODO_DEBUG_LOG
-		exit 1
+		exit 3
 	fi
 	
 	$util updateBuildState $PROJECT_ID $BUILD_STATE_INPROGRESS $BUILD_PUSH_INPROGRESS_MSG |& tee -a $ODO_DEBUG_LOG
@@ -68,7 +68,7 @@ function create() {
 	$odo push $COMPONENT_NAME $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	if [ $? -ne 0 ]; then
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_PUSH_FAIL_MSG |& tee -a $ODO_DEBUG_LOG
-		exit 1
+		exit 3
 	fi
 
 	$util updateBuildState $PROJECT_ID $BUILD_STATE_INPROGRESS $BUILD_URL_INPROGRESS_MSG |& tee -a $ODO_DEBUG_LOG
@@ -76,7 +76,7 @@ function create() {
 	$odo url $COMPONENT_NAME $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	if [ $? -ne 0 ]; then
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_URL_FAIL_MSG |& tee -a $ODO_DEBUG_LOG
-		exit 1
+		exit 3
 	fi
 
 	$util updateBuildState $PROJECT_ID $BUILD_STATE_INPROGRESS $BUILD_PUSH_INPROGRESS_MSG |& tee -a $ODO_DEBUG_LOG
@@ -88,7 +88,7 @@ function create() {
 	else
 		echo -e "\nFailed to create or build or deploy odo application\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_PUSH_FAIL_MSG |& tee -a $ODO_DEBUG_LOG
-		exit 1
+		exit 3
 	fi
 
 	echo "Touching odo app log file: $ODO_APP_LOG" |& tee -a $ODO_DEBUG_LOG
@@ -109,7 +109,7 @@ function create() {
 		echo -e "\nSuccessfully added owner references for all resources deployed by odo\n" |& tee -a $ODO_DEBUG_LOG
 	else
 		echo -e "\nFailed to add owner references for all resources deployed by odo\n" |& tee -a $ODO_DEBUG_LOG
-		exit 1
+		exit 3
 	fi
 }
 
@@ -127,7 +127,7 @@ function remove() {
 		echo -e "\nSuccessfully removed odo application\n" |& tee -a $ODO_DEBUG_LOG
 	else
 		echo -e "\nFailed to remove odo application\n" |& tee -a $ODO_DEBUG_LOG
-		exit 1
+		exit 3
 	fi
 }
 
@@ -143,7 +143,7 @@ function update() {
 	else
 		echo -e "\nFailed to update odo application\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_PUSH_FAIL_MSG
-		exit 1
+		exit 3
 	fi
 
 	echo "Starting odo application" |& tee -a $ODO_DEBUG_LOG

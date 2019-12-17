@@ -55,7 +55,7 @@ function addOwnerReference() {
         RESOURCE_NAME=$(kubectl get $RESOURCE --selector=$COMPONENT_LABEL,$APP_LABEL -o jsonpath='{.items[0].metadata.name}')
         kubectl patch $RESOURCE $RESOURCE_NAME --patch '{"metadata": {"ownerReferences": [{"apiVersion": "apps/v1", "blockOwnerDeletion": true, "controller": true, "kind": "ReplicaSet", "name": "'$PFE_NAME'", "uid": "'$PFE_UID'"}]}}'
         if [ $? -ne 0 ]; then
-            exit 1
+            exit 3
         fi
     done
 }
