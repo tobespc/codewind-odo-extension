@@ -54,7 +54,7 @@ function create() {
 	echo "Triggering log file event for: $ODO_BUILD_LOG" |& tee -a $ODO_DEBUG_LOG
 	$util newLogFileAvailable $PROJECT_ID "build"
 
-	echo -e "\nCreating, building and deploying odo application" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+	echo -e "\nCreating, building and deploying odo component" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	$util updateBuildState $PROJECT_ID $BUILD_STATE_INPROGRESS $BUILD_CREATE_INPROGRESS_MSG |& tee -a $ODO_DEBUG_LOG
 	echo -e "\nStep 1 of 4:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	$odo create $COMPONENT_TYPE $COMPONENT_NAME $ODO_BUILD_LOG $ODO_DEBUG_LOG
@@ -85,10 +85,10 @@ function create() {
 	exitCode=$?
 	imageLastBuild=$(($(date +%s)*1000))
 	if [ $exitCode -eq 0 ]; then
-		echo -e "\nSuccessfully created, built and deployed odo application\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+		echo -e "\nSuccessfully created, built and deployed odo component\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_SUCCESS " " "$imageLastBuild" |& tee -a $ODO_DEBUG_LOG
 	else
-		echo -e "\nFailed to create or build or deploy odo application\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+		echo -e "\nFailed to create or build or deploy odo component\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_PUSH_FAIL_MSG |& tee -a $ODO_DEBUG_LOG
 		exit 3
 	fi
@@ -98,7 +98,7 @@ function create() {
 	echo "Triggering log file event for: $ODO_APP_LOG" |& tee -a $ODO_DEBUG_LOG
 	$util newLogFileAvailable $PROJECT_ID "app"
 
-	echo "Starting odo application" |& tee -a $ODO_DEBUG_LOG
+	echo "Starting odo component" |& tee -a $ODO_DEBUG_LOG
 	$util updateAppState $PROJECT_ID $APP_STATE_STOPPED |& tee -a $ODO_DEBUG_LOG
 	APP_NAME=$($odoUtil getAppName)
 	POD_NAME=$($odoUtil getPodName $COMPONENT_NAME $APP_NAME)
@@ -116,7 +116,7 @@ function create() {
 }
 
 function remove() {
-	echo -e "\nRemoving odo application" |& tee -a $ODO_DEBUG_LOG
+	echo -e "\nRemoving odo component" |& tee -a $ODO_DEBUG_LOG
 	echo -e "\nStep 1 of 2:" |& tee -a $ODO_DEBUG_LOG
 	echo "Stopping monitor app log" |& tee -a $ODO_DEBUG_LOG
 	APP_NAME=$($odoUtil getAppName)
@@ -126,30 +126,30 @@ function remove() {
 	echo -e "\nStep 2 of 2:" |& tee -a $ODO_DEBUG_LOG
 	$odo delete $COMPONENT_NAME $ODO_DEBUG_LOG
 	if [ $? -eq 0 ]; then
-		echo -e "\nSuccessfully removed odo application\n" |& tee -a $ODO_DEBUG_LOG
+		echo -e "\nSuccessfully removed odo component\n" |& tee -a $ODO_DEBUG_LOG
 	else
-		echo -e "\nFailed to remove odo application\n" |& tee -a $ODO_DEBUG_LOG
+		echo -e "\nFailed to remove odo component\n" |& tee -a $ODO_DEBUG_LOG
 		exit 3
 	fi
 }
 
 function update() {
-	echo -e "\nUpdating odo application" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+	echo -e "\nUpdating odo component" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	$util updateBuildState $PROJECT_ID $BUILD_STATE_INPROGRESS $BUILD_PUSH_INPROGRESS_MSG
 	echo -e "\nStep 1 of 1:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	$odo push $COMPONENT_NAME $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	exitCode=$?
 	imageLastBuild=$(($(date +%s)*1000))
 	if [ $exitCode -eq 0 ]; then
-		echo -e "\nSuccessfully updated odo application\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+		echo -e "\nSuccessfully updated odo component\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_SUCCESS " " "$imageLastBuild"
 	else
-		echo -e "\nFailed to update odo application\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+		echo -e "\nFailed to update odo component\n" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_PUSH_FAIL_MSG
 		exit 3
 	fi
 
-	echo "Starting odo application" |& tee -a $ODO_DEBUG_LOG
+	echo "Starting odo component" |& tee -a $ODO_DEBUG_LOG
 	$util updateAppState $PROJECT_ID $APP_STATE_STARTING
 }
 
