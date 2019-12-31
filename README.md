@@ -1,33 +1,26 @@
-# Codewind ODO extension
+# Codewind OpenShift Do (odo) extension
 [![License](https://img.shields.io/badge/License-EPL%202.0-red.svg?label=license&logo=eclipse)](https://www.eclipse.org/legal/epl-2.0/)
 [![Build Status](https://ci.eclipse.org/codewind/buildStatus/icon?job=Codewind%2Fcodewind-odo-extension%2Fmaster)](https://ci.eclipse.org/codewind/job/Codewind/job/codewind-odo-extension/job/master/)
 [![Chat](https://img.shields.io/static/v1.svg?label=chat&message=mattermost&color=145dbf)](https://mattermost.eclipse.org/eclipse/channels/eclipse-codewind)
 
-Extension to Codewind providing support for ODO projects: https://codewind.dev
+Extension to Codewind providing support for OpenShift Do (odo) projects: https://codewind.dev
 
-## Add additional rules to support Codewind ODO extension
-The ODO extension needs to add additional rules for accessing OpenShift resources:
-1. In your home directory, run the following command to clone the ODO extension repository:
-`git clone https://github.com/eclipse/codewind-odo-extension`
-2. Login to your OpenShift/OKD cluster
-3. Go into `~/codewind-odo-extension/odo-RBAC` then run the following commands to add additional rules:
-`kubectl apply -f codewind-odoclusterrole.yaml`
-`kubectl apply -f codewind-odoclusterrolebinding.yaml`
-
-## Install Codewind ODO extension manually
-1. In your home directory, run the following commands to clone the ODO extension repository:
-`git clone https://github.com/eclipse/codewind-odo-extension`
-2. Copy the ODO extension repository to `/codewind-workspace/.extensions` directory in the PFE container
-3. Shell into the PFE container then run `mkdir -p /codewind-workspace/.extensions/codewind-odo-extension/bin` to create the bin folder for ODO extension
-4. Shell into the PFE container then download ODO CLI to `/codewind-workspace/.extensions/codewind-odo-extension/bin` by using `curl -L https://github.com/openshift/odo/releases/latest/download/odo-linux-amd64 -o /codewind-workspace/.extensions/codewind-odo-extension/bin/odo && chmod +x /codewind-workspace/.extensions/codewind-odo-extension/bin/odo`
-5. Restart the node server inside the PFE container to load the ODO extension
-Note: We already have an installer for the ODO extension. The installer will help you automatically install the ODO extension. If you are running Codewind on an OKD/OpenShift cluster, this is the only workaround when the installer does not work properly.
+## Adding roles and importing Java image stream to support OpenShift Do (odo)
+1. Log in to your OpenShift or Origin Community Distribution (OKD) cluster.
+2. Enter the following commands to go to the correct location, add the roles and import Java image stream, and perform cleanup:
+```
+git clone https://github.com/eclipse/codewind-odo-extension &&\
+   cd ./codewind-odo-extension/setup &&\
+   ./setup.sh
+   cd - &&\
+   rm -rf codewind-odo-extension
+```
 
 ## Current Limitations
-- ODO extension is supported on Codewind for Eclipse Che with an OKD/OpenShift cluster
-- ODO extension does not support project configuration
-- ODO extension does not support debug mode
-- ODO extension does not have HTTPS protocol support for accessing applications
+- Only supports on Codewind for Eclipse Che with OKD/OpenShift cluster.
+- Does not support project configuration.
+- Does not support debug mode.
+- Does not have HTTPS protocol support for accessing applications.
 
 ## Contributing 
 We welcome submitting issues and contributions:
