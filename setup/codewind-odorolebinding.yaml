@@ -9,14 +9,13 @@
 #     IBM Corporation - initial API and implementation
 #*******************************************************************************
 
-kind: ClusterRoleBinding
+kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: codewind-odoclusterrolebinding
+  name: codewind-odorolebinding
 subjects:
 - kind: ServiceAccount
-  namespace: che
-  name: che-workspace
+  name: <serviceaccount>
 roleRef:
   kind: ClusterRole
   name: codewind-odoclusterrole
