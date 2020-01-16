@@ -24,6 +24,7 @@ shift 1
 
 function odoCreate() {
 	echo "- Creating odo component: $COMPONENT_NAME" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+	$ODO_CLI preference set -f UpdateNotification false |& tee -a $ODO_DEBUG_LOG
 	$ODO_CLI create $COMPONENT_TYPE $COMPONENT_NAME |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
     if [ $? -eq 0 ]; then
 		echo "- Successfully created odo component: $COMPONENT_NAME" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
