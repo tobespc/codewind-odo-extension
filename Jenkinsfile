@@ -56,11 +56,11 @@ pipeline {
                         fi
                         export VERSION
                         export OUTPUT_NAME="$REPO_NAME-$VERSION"
-                        export DOWNLOAD_AREA_URL="https://download.eclipse.org/codewind/$REPO_NAME"
+                        export DOWNLOAD_AREA_URL="https://archive.eclipse.org/codewind/$REPO_NAME"
                         export LATEST_DIR="latest"
                         export BUILD_INFO="build_info.properties"
                         export SSH_HOST="genie.codewind@projects-storage.eclipse.org"
-                        export DEPLOY_DIR="/home/data/httpd/download.eclipse.org/codewind/$REPO_NAME"
+                        export DEPLOY_DIR="/home/data/httpd/archive.eclipse.org/codewind/$REPO_NAME"
                         DEPLOY_BUILD_DIR="$DEPLOY_DIR/$GIT_BRANCH/$BUILD_ID"
                         DEPLOY_LATEST_DIR="$DEPLOY_DIR/$GIT_BRANCH/$LATEST_DIR"
                         BUILD_URL="$DOWNLOAD_AREA_URL/$GIT_BRANCH/$BUILD_ID"
