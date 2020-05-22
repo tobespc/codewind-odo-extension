@@ -76,6 +76,47 @@ function addProjectIDLabel() {
     done
 }
 
+function updateCodewindLinkEnvs() {
+    PROJECT_LINKS_ENV_FILE="$PROJECT_DIRECTORY/.codewind-project-links.env"
+    OLD_PROJECT_LINKS_ENV_FILE="$PROJECT_DIRECTORY/.codewind-project-links.env.old"
+	if [ -f "$PROJECT_LINKS_ENV_FILE" ]; then
+        # If files are the same don't update
+        cmp -s $PROJECT_LINKS_ENV_FILE $OLD_PROJECT_LINKS_ENV_FILE
+        if [ $? -eq 0 ]; then
+            echo "Links have not changed, not updating the config"
+            exit 0
+        fi
+        # If we have old links, first remove them all from the config
+        # This ensure that when we delete a link, it is removed
+        if [ -f "$OLD_PROJECT_LINKS_ENV_FILE" ]; then
+            while read LINE; do $ODO_CLI config unset --env $(echo $LINE | awk -F'=' '{print $1}'); done < $OLD_PROJECT_LINKS_ENV_FILE
+            if [ $? -ne 0 ]; then
+                # Log the error but don't exit if we can't remove them
+                echo "Error removing links from local config"
+            fi
+        fi
+
+        # Add all the links to the config
+        while read LINE; do $ODO_CLI config set --env $LINE; done < $PROJECT_LINKS_ENV_FILE
+        if [ $? -ne 0 ]; then
+            echo "Error adding new links to local config"
+            exit 3
+        fi
+
+        # Update the config
+        $ODO_CLI push --config
+        if [ $? -ne 0 ]; then
+            echo "Error pushing config to add new links"
+            exit 3
+        fi
+
+        # Create and update the OLD_PROJECT_LINKS file
+        > $OLD_PROJECT_LINKS_ENV_FILE
+        while read LINE; do echo $LINE >> $OLD_PROJECT_LINKS_ENV_FILE; done < $PROJECT_LINKS_ENV_FILE
+        echo "Codewind links updated successfully"
+	fi
+}
+
 if [ $COMMAND == "getAppName" ]; then
     getAppName
 elif [ $COMMAND == "getPodName" ]; then
@@ -97,4 +138,7 @@ elif [ $COMMAND == "addProjectIDLabel" ]; then
     ODO_DEBUG_LOG=$3
     PROJECT_ID=$4
     addProjectIDLabel
+elif [ $COMMAND == "updateCodewindLinkEnvs" ]; then
+    PROJECT_DIRECTORY=$1
+    updateCodewindLinkEnvs
 fi
