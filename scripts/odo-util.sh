@@ -60,6 +60,22 @@ function addOwnerReference() {
     done
 }
 
+function addProjectIDLabel() {
+    PFE_LABEL="app=codewind-pfe,codewindWorkspace=$CHE_WORKSPACE_ID"
+    COMPONENT_LABEL="app.kubernetes.io/instance=$COMPONENT_NAME"
+    APP_LABEL="app.kubernetes.io/part-of=$APP_NAME"
+    RESOURCES=('deploymentconfig' 'services' 'routes')
+
+    for RESOURCE in "${RESOURCES[@]}"; do
+        echo "Adding projectID label to resource: $RESOURCE" |& tee -a $ODO_DEBUG_LOG
+        RESOURCE_NAME=$(kubectl get $RESOURCE --selector=$COMPONENT_LABEL,$APP_LABEL -o jsonpath='{.items[0].metadata.name}')
+        kubectl patch $RESOURCE $RESOURCE_NAME --patch '{"metadata":{"labels":{"projectID":"'$PROJECT_ID'"}}}'
+        if [ $? -ne 0 ]; then
+            exit 3
+        fi
+    done
+}
+
 if [ $COMMAND == "getAppName" ]; then
     getAppName
 elif [ $COMMAND == "getPodName" ]; then
@@ -75,4 +91,10 @@ elif [ $COMMAND == "addOwnerReference" ]; then
     APP_NAME=$2
     ODO_DEBUG_LOG=$3
     addOwnerReference
+elif [ $COMMAND == "addProjectIDLabel" ]; then
+    COMPONENT_NAME=$1
+    APP_NAME=$2
+    ODO_DEBUG_LOG=$3
+    PROJECT_ID=$4
+    addProjectIDLabel
 fi
