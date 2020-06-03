@@ -56,15 +56,15 @@ function create() {
 
 	echo -e "\nCreating, building and deploying odo component" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	$util updateBuildState $PROJECT_ID $BUILD_STATE_INPROGRESS $BUILD_CREATE_INPROGRESS_MSG |& tee -a $ODO_DEBUG_LOG
-	echo -e "\nStep 1 of 4:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+	echo -e "\nStep 1 of 5:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	$odo create $COMPONENT_TYPE $COMPONENT_NAME $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	if [ $? -ne 0 ]; then
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_CREATE_FAIL_MSG |& tee -a $ODO_DEBUG_LOG
 		exit 3
 	fi
-	
+
 	$util updateBuildState $PROJECT_ID $BUILD_STATE_INPROGRESS $BUILD_PUSH_INPROGRESS_MSG |& tee -a $ODO_DEBUG_LOG
-	echo -e "\nStep 2 of 4:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+	echo -e "\nStep 2 of 5:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	$odo push $COMPONENT_NAME $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	if [ $? -ne 0 ]; then
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_PUSH_FAIL_MSG |& tee -a $ODO_DEBUG_LOG
@@ -72,15 +72,23 @@ function create() {
 	fi
 
 	$util updateBuildState $PROJECT_ID $BUILD_STATE_INPROGRESS $BUILD_URL_INPROGRESS_MSG |& tee -a $ODO_DEBUG_LOG
-	echo -e "\nStep 3 of 4:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+	echo -e "\nStep 3 of 5:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	$odo url $COMPONENT_NAME $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	if [ $? -ne 0 ]; then
 		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_URL_FAIL_MSG |& tee -a $ODO_DEBUG_LOG
 		exit 3
 	fi
 
+	$util updateBuildState $PROJECT_ID $BUILD_STATE_INPROGRESS $BUILD_URL_INPROGRESS_MSG |& tee -a $ODO_DEBUG_LOG
+	echo -e "\nStep 4 of 5:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+	$odoUtil updateCodewindLinkEnvs $ROOT
+	if [ $? -ne 0 ]; then
+		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_URL_FAIL_MSG |& tee -a $ODO_DEBUG_LOG
+		exit 3
+	fi
+
 	$util updateBuildState $PROJECT_ID $BUILD_STATE_INPROGRESS $BUILD_PUSH_INPROGRESS_MSG |& tee -a $ODO_DEBUG_LOG
-	echo -e "\nStep 4 of 4:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+	echo -e "\nStep 5 of 5:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	$odo push $COMPONENT_NAME $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	exitCode=$?
 	imageLastBuild=$(($(date +%s)*1000))
@@ -144,8 +152,17 @@ function remove() {
 
 function update() {
 	echo -e "\nUpdating odo component" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+
+	$util updateBuildState $PROJECT_ID $BUILD_STATE_INPROGRESS $BUILD_URL_INPROGRESS_MSG |& tee -a $ODO_DEBUG_LOG
+	echo -e "\nStep 1 of 2, Updating Codewind links:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+	$odoUtil updateCodewindLinkEnvs $ROOT
+	if [ $? -ne 0 ]; then
+		$util updateBuildState $PROJECT_ID $BUILD_STATE_FAILED $BUILD_URL_FAIL_MSG |& tee -a $ODO_DEBUG_LOG
+		exit 3
+	fi
+
 	$util updateBuildState $PROJECT_ID $BUILD_STATE_INPROGRESS $BUILD_PUSH_INPROGRESS_MSG
-	echo -e "\nStep 1 of 1:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
+	echo -e "\nStep 2 of 2:" |& tee -a $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	$odo push $COMPONENT_NAME $ODO_BUILD_LOG $ODO_DEBUG_LOG
 	exitCode=$?
 	imageLastBuild=$(($(date +%s)*1000))
@@ -173,7 +190,7 @@ elif [ "$COMMAND" == "update" ]; then
 	if [ $? -ne 0 ]; then
 		remove
 		create
-	fi	
+	fi
 
 # Remove component from the OpenShift cluster
 elif [ "$COMMAND" == "remove" ]; then
