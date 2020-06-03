@@ -113,6 +113,15 @@ function create() {
 		echo -e "\nFailed to add owner references for all resources deployed by odo\n" |& tee -a $ODO_DEBUG_LOG
 		exit 3
 	fi
+
+	echo "Adding projectID label for all resources deployed by odo" |& tee -a $ODO_DEBUG_LOG
+	$odoUtil addProjectIDLabel $COMPONENT_NAME $APP_NAME $ODO_DEBUG_LOG $PROJECT_ID
+	if [ $? -eq 0 ]; then
+		echo -e "\nSuccessfully added projectID label for all resources deployed by odo\n" |& tee -a $ODO_DEBUG_LOG
+	else
+		echo -e "\nFailed to add projectID label for all resources deployed by odo\n" |& tee -a $ODO_DEBUG_LOG
+		exit 3
+	fi
 }
 
 function remove() {
