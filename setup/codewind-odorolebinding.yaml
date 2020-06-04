@@ -15,7 +15,7 @@ metadata:
   name: codewind-odorolebinding
 subjects:
 - kind: ServiceAccount
-  name: <serviceaccount>
+  name: codewind-tobes-codewind
 roleRef:
   kind: ClusterRole
   name: codewind-odoclusterrole
